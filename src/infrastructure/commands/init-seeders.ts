@@ -3,7 +3,8 @@ import { asyncForEach } from '../helpers/util';
 const sedeersList = [
     'npx sequelize-cli db:seed:undo:all',
     'npx sequelize-cli db:seed --seed 20210531031433-insert-companies',
-    // 'npx sequelize-cli db:migrate',
+    'npx sequelize-cli db:seed --seed 20210531055807-insert-personnel',
+    'npx sequelize-cli db:seed --seed 20210531064834-insert-user',
 ];
 
 const runSeeder = async (seeder) => {

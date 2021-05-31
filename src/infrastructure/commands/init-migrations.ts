@@ -3,7 +3,8 @@ import { asyncForEach } from '../helpers/util';
 const migrationsList = [
     'npx sequelize-cli db:migrate:undo:all',
     'npx sequelize-cli db:migrate --to 20210531020455-create-company.js',
-    // 'npx sequelize-cli db:migrate',
+    'npx sequelize-cli db:migrate --to 20210531042622-create-pesonnel.js',
+    'npx sequelize-cli db:migrate --to 20210531061554-create-user.js',
 ];
 const runMigration = async (migration) => {
     return new Promise((resolve, reject) => {

@@ -1,0 +1,11 @@
+extends base.pug
+
+block title
+	title Activación de cuenta
+block content
+	.container.my-5
+		h1 Bienvenido a Piknik
+		p.important Estás recibiendo este correo porque alguien agregó este correo a su empresa.
+		p Para activar su cuenta, sigue la liga abajo dónde tendrá que establecer una contraseña para su cuenta.
+		a(href=`${verifyLink}` class='btn btn-primary') Activar cuenta
+		br 

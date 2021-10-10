@@ -1,0 +1,9 @@
+extends base.pug
+
+block title
+    title Registro de piknik
+block content
+    .container.my-5
+        h1 Registro de Piknik
+        p.important Verifica tu correo electrónico dando click en el siguiente link. 
+        a(href=`${verifyLink}` class='btn btn-primary') Activar cuenta

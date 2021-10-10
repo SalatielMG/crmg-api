@@ -1,0 +1,30 @@
+extends layout.pug
+
+block content
+
+    table.container590(border='0' width='590' align='center' cellpadding='0' cellspacing='0')
+        tr
+            td(align='left' style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;")
+                // section text ======
+                //p(style='line-height: 24px; margin-bottom:15px;')
+                //    | Firstname,
+                p(style='line-height: 24px;margin-bottom:15px;')
+                    | Estás recibiendo este correo porque se registro o alguien agrego su correo a la plataforma.
+                p(style='line-height: 24px; margin-bottom:20px;')
+                    | Para activar su cuenta, porfavor ingrese el siguiente token en la App para verificar su cuenta.
+                table(border='0' align='center' width='180' cellpadding='0' cellspacing='0' bgcolor='5caad2' style='margin-bottom:20px;')
+                    tr
+                        td(height='10' style='font-size: 10px; line-height: 10px;') &nbsp;
+                    tr
+                        td(align='center' style="color: #ffffff; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 22px; letter-spacing: 2px;")
+                            // main section button
+                            div(style='line-height: 22px;')
+                                a(href='' style='color: #ffffff; text-decoration: none;') #{ token }
+                    tr
+                        td(height='10' style='font-size: 10px; line-height: 10px;') &nbsp;
+                p(style='line-height: 24px;margin-bottom:15px;')
+                    | El token expira despues de cinco minutos despues de ser recibido.
+                p(style='line-height: 24px')
+                    | Att.
+                    br
+                    |                                                 Equipo CRMG

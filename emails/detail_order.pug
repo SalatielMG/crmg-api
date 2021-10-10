@@ -1,0 +1,91 @@
+extends base.pug
+
+block title
+    title Detalles del pedido #{ data.orderId }
+
+block content
+    .container
+        .d-flex.align-content-center.align-items-center.mb-3.w-100
+            img(src=data.logo width='170' height='100')
+        .row.border-0
+            .col-auto
+                img(src=data.restaurant.image width='100' height='100')
+            .col
+                .row.border-0
+                    h4.card-title #{data.restaurant.name}
+                .row.border-0.mb-2
+                    p.text-muted #{data.restaurant.address}
+
+        .row.border-0.mb-2
+            .table-responsive
+                table.table.table-light
+                    tbody
+                        tr
+                            td.border-0
+                                strong Tipo:
+                            td.border-0.d-inline-flex.w-100.justify-content-end #{data.deliveryType}
+                        tr
+                            td.border-0
+                                strong Horario:
+                            td.border-0.d-inline-flex.w-100.justify-content-end #{data.deliveryTime}
+                        tr
+                            td.border-0
+                                strong Comensales:
+                            td.border-0.d-inline-flex.w-100.justify-content-end #{data.guests}
+                        if data.coupon
+                            tr
+                                td.border-0
+                                    strong Cupon:
+                                td.border-0.d-inline-flex.w-100.justify-content-end #{data.coupon}
+                        tr
+                            td.border-0
+                                strong Pago:
+                            td.border-0.d-inline-flex.w-100.justify-content-end
+                                img(src=data.card.brandImage width='35' height='25' style='border-radius: 4px').mr-1
+                                label #{data.card.pan}
+
+
+
+
+        .row.border-0.mb-2
+            table.table.table-light
+                thead.thead-dark
+                    tr
+                        th(scope='col' colspan='3') Platillo
+                        th(scope='col') Comentario
+                        th(scope='col').d-inline-flex.justify-content-end.w-100 Precio
+                tbody
+                    each item in data.items
+                        tr
+                            td #{item.quantity}
+                            td
+                                img(src=item.image width='70' height='50' style='border-radius: 4px')
+                            td #{item.name}
+                            td #{item.comments}
+                            td.d-inline-flex.justify-content-end.w-100 #{item.priceFormatter}
+
+        .row.border-0
+            .table-responsive
+                table.table.table-light
+                    tbody
+                        tr.border-0
+                            td.border-0
+                                strong Subtotal:
+                            td.border-0.d-inline-flex.w-100.justify-content-end #{data.subtotal}
+                        tr.border-0
+                            td.border-0
+                                strong Cargo por servicio:
+                            td.border-0.d-inline-flex.w-100.justify-content-end #{data.service_price}
+                        tr.border-0
+                            td.border-0
+                                strong Descuento:
+                            td.border-0.d-inline-flex.w-100.justify-content-end #{data.discount}
+                        tr.pb-3.border-0
+                            td.border-0
+                                h3
+                                    strong Total Pagado:
+                            td.border-0.d-inline-flex.w-100.justify-content-end
+                                h4.text-success
+                                    strong #{data.total}
+        .d-flex.align-items-center.mb-2
+            h5.text-center.w-100 Pedido realizado: #{data.date}

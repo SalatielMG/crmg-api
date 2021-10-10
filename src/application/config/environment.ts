@@ -12,7 +12,8 @@ dotenv.config({ path: ".env" })
 export const ENVIRONMENT = process.env.NODE_ENV;
 const PROD = ENVIRONMENT === "production"
 export const PORT = process.env.PORT
-
+export const ENABLED_MANUAL_SET_PASSWORD = process.env.ENABLED_MANUAL_SET_PASSWORD
+export const SALT = 12;
 
 /**
 |----------------------------------------------------------------------------------------|
@@ -21,6 +22,7 @@ export const PORT = process.env.PORT
 */
 
 export const SESSION_SECRET = process.env.JWT_SECRET || ""
+export const SITE_TIME_ZONE = process.env.SITE_TIME_ZONE
 
 /**
 * Use only if you include jwt
@@ -50,7 +52,7 @@ export const CONFIG_MYSQL = {
 export const MONGODB_URI = PROD
     ? process.env.MONGO_PRODUCTION
     : process.env.MONGO_DEVELOPMENT
-    
+
 /**
  * Postgres
  */
@@ -73,3 +75,26 @@ export const CONFIG_SEQUELIZE: Options = {
     dialect: 'postgres',
     timezone: '+00:00'
 }
+
+/**
+ * Nodemailer
+ * */
+export const MAIL_HOST = process.env.MAIL_HOST
+export const MAIL_PORT = process.env.MAIL_PORT
+export const MAIL_USERNAME = process.env.MAIL_USERNAME
+export const MAIL_PASSWORD = process.env.MAIL_PASSWORD
+
+export const MAIL_FROM = process.env.MAIL_FROM_ADDRESS
+export const MAIL_SUBJECT = process.env.MAIL_SUBJECT
+
+export const CONFIG_NODEMAILER = {
+    host: MAIL_HOST,
+    port: MAIL_PORT,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: MAIL_USERNAME,
+        pass: MAIL_PASSWORD,
+    },
+};
+
+

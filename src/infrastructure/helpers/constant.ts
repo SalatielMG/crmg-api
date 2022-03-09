@@ -24,3 +24,4 @@ export const TYPES = {
     }
 }
 
+export const CATEGORY_ID_SERVICES_CONTRACT = 1;

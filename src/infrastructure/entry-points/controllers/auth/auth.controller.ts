@@ -1,4 +1,3 @@
-import {ActionController} from '@/infrastructure/entry-points/gateways/action-controller';
 import {badRequest, HttpRequest, HttpResponse, notFound, ok, unauthorized} from '@/infrastructure/helpers/http';
 import {makeAuthenticationFactory} from '@/infrastructure/driven-adapters/factories/authentication/authentication.factory';
 import {AuthenticationService} from '@/domain/use-cases/impl/authentication/authentication.service';
@@ -7,6 +6,7 @@ import {makeManualUpdatePasswordFactory} from '@/infrastructure/driven-adapters/
 import {IManualUpdatePasswordService} from '@/domain/use-cases/interfaces/authentication/manual-update-password.service.interface';
 import {makeRefreshAccessTokenFactory} from '@/infrastructure/driven-adapters/factories/authentication/refresh-access-token.factory';
 import {RefreshAccessTokenService} from '@/domain/use-cases/impl/authentication/refresh-access-token.service';
+import {ActionController} from '@/infrastructure/entry-points/gateways/controller/action-controller';
 
 export type Action = 'LOGIN'
     | 'MANUAL_UPDATE_PASSWORD'
@@ -37,7 +37,7 @@ export class AuthController extends ActionController<Action> {
         if (!responseAuthentication) {
             return unauthorized()
         }
-        console.log('request.body', request.body);
+        // console.log('request.body', request.body);
         return ok(responseAuthentication);
     }
 

@@ -13,7 +13,7 @@ export const adaptRoute = (controller: IController) => {
             }
 
             const httpResponse = await controller.handle(httpRequest)
-
+            console.log('adaptRoute httpResponse', httpResponse);
             return handleResponse({
                 res,
                 httpResponse
@@ -42,7 +42,6 @@ interface IParamsHandleError {
 
 export const handleResponse = ({httpResponse, next, res, req}: IParamsHandleError) => {
     const {statusCode, body} = httpResponse;
-    console.log('body handleResponse', body);
     if (statusCode === 500) {
         console.error('Internal Error', httpResponse);
         return res.status(500).json({
@@ -51,12 +50,12 @@ export const handleResponse = ({httpResponse, next, res, req}: IParamsHandleErro
         })
     }
     if (statusCode >= 200 && statusCode <= 299) {
-        console.log('next handleResponse', next);
+        // console.log('next handleResponse', next);
         if (!next) {
             return res.status(statusCode).json(body);
         }
         // Object.assign(req, body);
-        return next();
+        next();
         // return (!next)
         //     ?
         //     : next();

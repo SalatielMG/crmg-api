@@ -10,6 +10,7 @@ export class ManualUpdatePasswordService implements IManualUpdatePasswordService
     }
     updatePassword = async (newPassword: string, personnelId: number): Promise<void> => {
         const hasPassword = await this.bcryptAdapter.hash(newPassword);
+        console.log('hasPassword', hasPassword);
         await this.personnelRepositoryAdapter.updateByIdRepository(personnelId, {
             password: hasPassword
         });

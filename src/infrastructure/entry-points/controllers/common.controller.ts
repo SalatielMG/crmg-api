@@ -1,5 +1,5 @@
-import {ResourceController} from '@/infrastructure/entry-points/gateways/resource-controller';
 import {HttpRequest, HttpResponse, ok} from '@/infrastructure/helpers/http';
+import {ResourceController} from '@/infrastructure/entry-points/gateways/controller/resource-controller';
 
 export class CommonController extends ResourceController {
     create: (request: HttpRequest) => Promise<HttpResponse>;

@@ -1,9 +1,9 @@
-import {ResourceController} from '@/infrastructure/entry-points/gateways/resource-controller';
 import {badRequest, HttpRequest, HttpResponse, ok} from '@/infrastructure/helpers/http';
 import {AuthenticationService} from '@/domain/use-cases/impl/authentication/authentication.service';
 import {makeAuthenticationFactory} from '@/infrastructure/driven-adapters/factories/authentication/authentication.factory';
 import {IAuthenticationService} from '@/domain/use-cases/interfaces/authentication/authentication.service.interface';
 import {makeGetPersonnelFactory} from '@/infrastructure/driven-adapters/factories/personnel/get-personnel.factory';
+import {ResourceController} from '@/infrastructure/entry-points/gateways/controller/resource-controller';
 
 export class PersonnelController extends ResourceController {
 

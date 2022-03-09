@@ -1,6 +1,7 @@
 import { DataTypes, Model} from 'sequelize';
 import { ICompanyCreationRepository, ICompanyRepository } from '@/domain/models/gateways/company.repository';
 import { SequelizeHelper } from "@/infrastructure/driven-adapters/adapters/sequelize-adapter/sequelize-helper";
+import {ClientModel} from '@/domain/models/client.model';
 const { sequelize } = SequelizeHelper;
 
 export type ICompanyModel = {
@@ -42,3 +43,8 @@ CompanyModel.init(
         sequelize
     }
 )
+
+// CompanyModel.hasMany(ClientModel, {
+//     as: 'clients',
+//     foreignKey: 'company_id'
+// });

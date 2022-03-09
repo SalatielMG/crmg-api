@@ -29,6 +29,7 @@ export class LoadPersonnelTokenRepositoryService implements ILoadPersonnelTokenR
                     'phoneNumber',
                     'rol',
                     'email',
+                    'companyId',
                 ],
                 raw: true,
                 nest: true

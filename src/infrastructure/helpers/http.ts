@@ -1,6 +1,8 @@
 import {ServerError, UnauthorizedError} from '@/infrastructure/helpers/errors';
 import {OPERATION_NOt_FOUND} from '@/infrastructure/helpers/constant';
 import {IPersonnelRepository} from '@/domain/models/gateways/personnel.repository';
+import { IClientRepository } from '@/domain/models/gateways/client.repository';
+import { IContractRepository } from '@/domain/models/gateways/contract.repository';
 
 export type HttpRequest = {
     body?: any
@@ -8,6 +10,8 @@ export type HttpRequest = {
     params?: any
     method?: HttpRequestMethod
     personnel?: IPersonnelRepository
+    client?: IClientRepository,
+    contract?:IContractRepository
 }
 export type HttpRequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -16,7 +20,7 @@ export type HttpResponse = {
     body: any
 }
 
-export const ok = (data: any) => statusCodeAction(200, '', data);
+export const ok = (data: any = {}) => statusCodeAction(200, '', data);
 export const noContent = () => statusCodeAction(204);
 export const badRequest = (error: string) => statusCodeAction(400, error);
 export const unauthorized = (message?: string) => statusCodeAction(401, message);

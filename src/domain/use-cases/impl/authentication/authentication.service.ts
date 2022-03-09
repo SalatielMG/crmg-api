@@ -14,36 +14,43 @@ export class AuthenticationService implements IAuthenticationService {
     ) {
     }
     auth = async (data: IAuthenticationService.Params): Promise<IAuthenticationService.Result> => {
-        // @Code
-        // Verificar si existe el usuario con ese email.
-        let user = await this.personnelRepositoryAdapter.findOneRepository({
-            email: data.email
-        }, {
-            attributes: [
-                'id',
-                'name',
-                'firstName',
-                'lastName',
-                'job',
-                'phoneNumber',
-                'rol',
-                'email',
-                'password',
-            ],
-            raw: true,
-            nest: true
-        });
-        if (user) {
-            // Validar si la contrasena es la proprcionada
-            const isValid = await this.bcryptAdapter.compare(data.password, user.password);
-            if (isValid) {
-                const accessToken = await this.jwtAdapter.encrypt(user);
-                delete user.password;
-                return {
-                    accessToken,
-                    user
+        console.log('data auth', data);
+        try {
+            // @Code
+            // Verificar si existe el usuario con ese email.
+            let user = await this.personnelRepositoryAdapter.findOneRepository({
+                email: data.email
+            }, {
+                attributes: [
+                    'id',
+                    'name',
+                    'firstName',
+                    'lastName',
+                    'job',
+                    'phoneNumber',
+                    'rol',
+                    'email',
+                    'password',
+                ],
+                raw: true,
+                nest: true
+            });
+            console.log('user', user);
+            if (user) {
+                // Validar si la contrasena es la proprcionada
+                const isValid = await this.bcryptAdapter.compare(data.password, user.password);
+                if (isValid) {
+                    const accessToken = await this.jwtAdapter.encrypt(user);
+                    delete user.password;
+                    return {
+                        accessToken,
+                        user
+                    }
                 }
             }
+            // return null;
+        } catch (error) {
+            console.error('Error auth', error);
         }
         return null;
     }
